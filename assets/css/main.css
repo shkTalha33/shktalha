@@ -1,0 +1,1082 @@
+/* ----------------------------------------
+01. Basic Styles
+---------------------------------------- */
+
+/* ---------- Common ---------- */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  overflow-x: hidden;
+}
+body {
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+  background-color: #080808;
+  color: #fff;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #fffa;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+ul li {
+  font-size: 15px;
+}
+.hidden {
+  display: none !important;
+}
+::selection {
+  background-color: #fff;
+  color: #000;
+}
+
+/* ---------- Button ---------- */
+
+.button {
+  display: inline-block;
+  overflow: hidden;
+  outline: none;
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: normal;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  z-index: 0;
+}
+.button:hover,
+.button.active {
+  color: #000;
+}
+.button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -50%;
+  width: 320%;
+  aspect-ratio: 1/1;
+  z-index: -1;
+  border-radius: 50%;
+  background-color: #fff;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 0.3s ease-in-out;
+}
+.button:hover::after,
+.button.active::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+.button:active {
+  scale: 0.95;
+}
+
+/* ---------- Form Control ---------- */
+
+.form-control {
+  outline: none;
+  box-shadow: none !important;
+  padding: 8px 16px;
+  border-radius: 0;
+  border-color: #fff1;
+  background-color: #121212;
+  font-size: 15px;
+  color: #fff;
+}
+.form-control:focus {
+  border-color: #fff;
+  background-color: #121212;
+  color: #fff;
+}
+.form-control::placeholder {
+  color: #fff5;
+}
+
+/* ---------- Scroll Bar ---------- */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #fff1;
+}
+::-webkit-scrollbar-thumb {
+  background: #fffa;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+}
+
+/* ---------- Custom Cursor ---------- */
+
+.cursor {
+  position: fixed;
+  top: -100%;
+  left: -100%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  border: 1px solid #fffa;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1000;
+  transition: border-color 0.3s;
+}
+.cursor-pointer {
+  position: fixed;
+  top: -100%;
+  left: -100%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: #fffa;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1000;
+  transition: background-color 0.3s, width 0.3s, height 0.3s;
+}
+.cursor.active {
+  border-color: transparent;
+}
+.cursor-pointer.active {
+  width: 60px;
+  height: 60px;
+  background-color: #fff5;
+}
+
+/* ---------- Preloader ---------- */
+
+.preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 999999;
+  display: flex;
+}
+.preloader:after,
+.preloader:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  z-index: -1;
+  background-color: #000;
+  transition: 0.3s;
+}
+.preloader:after {
+  left: auto;
+  right: 0;
+}
+.preloader .loader-line {
+  margin: auto;
+  width: 1px;
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.8s;
+}
+.preloader .loader-line:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1px;
+  height: 0%;
+  transform: translateY(-50%);
+  background-color: #fff;
+  animation: 1s ease-in-out forwards lineheight;
+}
+.preloader .loader-line:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: #bbb;
+  transform: translateY(-100%);
+  animation: 1.2s linear 2s infinite lineround;
+}
+@keyframes lineheight {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+@keyframes lineround {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(200%);
+  }
+}
+.preloaded .loader-line:after {
+  opacity: 0;
+}
+.preloaded .loader-line {
+  opacity: 0;
+  height: 100% !important;
+}
+.preloaded:after,
+.preloaded:before {
+  animation: 0.3s ease-in-out 0.5s forwards preloadedzero;
+}
+@keyframes preloadedzero {
+  0% {
+    width: 50%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+/* ---------- Menu Button ---------- */
+
+.menu-btn {
+  position: fixed;
+  top: 56px;
+  right: 56px;
+  width: 50px;
+  height: 50px;
+  transform: translate(0, -50%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+}
+.menu-btn div {
+  width: 30px;
+  height: 20px;
+  position: relative;
+}
+.menu-btn span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  background-color: #fff;
+  opacity: 1;
+  right: 0;
+  transform: rotate(0deg);
+  transform-origin: left center;
+  transition: 0.25s ease-in-out;
+}
+.menu-btn span:nth-child(1) {
+  top: 0px;
+  width: 50%;
+}
+.menu-btn span:nth-child(2) {
+  top: 50%;
+  width: 75%;
+}
+.menu-btn span:nth-child(3) {
+  top: 100%;
+  width: 100%;
+}
+.menu-btn.open span:nth-child(1) {
+  transform: rotate(45deg);
+  top: -1px;
+  left: 4px;
+}
+.menu-btn.open span:nth-child(2) {
+  width: 0%;
+  opacity: 0;
+}
+.menu-btn.open span:nth-child(3) {
+  transform: rotate(-45deg);
+  bottom: -1px;
+  left: 4px;
+}
+.menu-btn:hover span,
+.menu-btn.open span {
+  width: 100%;
+}
+
+/* ---------- Overlay Effect ---------- */
+
+.overlay-effect {
+  position: fixed;
+  width: 300vw;
+  height: 300vh;
+  background-color: #f5f5f5;
+  rotate: 15deg;
+  transform: translateY(-100%);
+  z-index: 11;
+}
+
+/* ---------- Navigation ---------- */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0c0c0c;
+  transform: translate(0, -100%);
+  transition: 0.5s ease-in-out;
+  z-index: 9;
+}
+nav ul {
+  position: relative;
+}
+nav.open {
+  transform: none;
+}
+nav ul li {
+  padding: 4px;
+}
+nav ul li .nav-link {
+  color: #fff;
+  font-size: 36px;
+  font-weight: 600;
+  padding: 0 20px;
+  text-align: center;
+  transition: 0.3s;
+}
+nav ul li .nav-link:hover {
+  letter-spacing: 4px;
+}
+nav ul li .nav-link:before {
+  content: attr(data-text);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5em;
+  font-weight: 900;
+  color: #fff1;
+  z-index: -1;
+  opacity: 0;
+  text-transform: uppercase;
+  letter-spacing: 100px;
+  pointer-events: none;
+  transition: all 0.7s ease;
+}
+nav ul li .nav-link:hover:before,
+nav ul li .nav-link.active:before {
+  opacity: 1;
+  letter-spacing: 10px;
+}
+
+/* ---------- Wrapper ---------- */
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: none;
+}
+.wrapper.active {
+  display: block;
+}
+
+/* ---------- Section ---------- */
+
+section {
+  padding-top: 100px;
+}
+section:last-child {
+  padding-bottom: 100px;
+}
+.sec-title {
+  width: fit-content;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 40px;
+}
+.sec-title h1 {
+  font-size: 96px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  font-style: italic;
+  -webkit-text-stroke: 0.5px #fffa;
+  color: transparent;
+  line-height: 1;
+  margin: auto;
+  margin-bottom: 0;
+  width: fit-content;
+  user-select: none;
+}
+.sec-title h2 {
+  font-size: 32px;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  line-height: 1;
+  margin: 0 auto;
+  width: fit-content;
+  position: relative;
+  bottom: 30px;
+}
+.sec-title h2::before,
+.sec-title h2::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 4px;
+  background-color: #fff;
+}
+.sec-title h2::before {
+  right: calc(100% + 10px);
+}
+.sec-title h2::after {
+  left: calc(100% + 10px);
+}
+
+/* ----------------------------------------
+02. Hero Wrapper
+---------------------------------------- */
+
+/* ---------- Hero Section ---------- */
+
+.hero {
+  min-height: 100vh;
+  height: 100vh;
+  text-align: center;
+  padding: 0 !important;
+  overflow: hidden;
+  background-image: url(../img/hero.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.hero h1 {
+  font-size: 68px;
+  font-weight: 700;
+}
+.hero h2 {
+  font-size: 32px;
+  font-weight: 500;
+  margin-top: 20px;
+}
+.hero h2 b {
+  font-weight: inherit;
+}
+.hero .logo {
+  position: absolute;
+  top: 56px;
+  left: 56px;
+  transform: translate(0, -50%);
+  display: block;
+  width: 50px;
+  z-index: 100;
+}
+.hero #particles-js {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.hero .social-icons {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+.hero .social-icons a {
+  font-size: 22px;
+  padding: 6px;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+.hero .social-icons a:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* ----------------------------------------
+03. About Wrapper
+---------------------------------------- */
+
+/* ---------- About Section ---------- */
+
+.about h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.about p {
+  line-height: 2;
+  overflow: hidden;
+}
+.about .detail {
+  margin-top: 30px;
+}
+.about .detail li {
+  margin-bottom: 16px;
+}
+.about .detail li span:first-child {
+  display: inline-block;
+  font-weight: 600;
+  width: 120px;
+  position: relative;
+}
+.about .detail li span:first-child::after {
+  content: ":";
+  position: absolute;
+  right: 0;
+}
+.about .detail li span:last-child {
+  margin-left: 10px;
+  color: #fffa;
+}
+.about .button-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* ---------- Service Section ---------- */
+
+.service-item {
+  overflow: hidden;
+}
+.service-card {
+  position: relative;
+  padding: 30px;
+  background-color: #121212;
+  transition: background-color 0.3s ease-in-out;
+  overflow: hidden;
+}
+.service-card:hover {
+  background-color: #202020;
+}
+.service-card i {
+  font-size: 56px;
+}
+.service-card h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 16px;
+}
+.service-card p {
+  margin-top: 16px;
+  line-height: 2;
+  margin-bottom: 0;
+}
+
+.card-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  pointer-events: none;
+}
+.card-border span {
+  display: inline-block;
+  position: absolute;
+  background-color: #fff;
+  transition: all 0.3s linear;
+  z-index: 2;
+}
+.card-border span.top {
+  width: 100%;
+  height: 1px;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.card-border span.right {
+  width: 1px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+}
+.card-border span.bottom {
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+}
+.card-border span.left {
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: scaleY(0);
+  transform-origin: bottom;
+}
+.service-card:hover .card-border span.top {
+  transform: scaleX(1);
+}
+.service-card:hover .card-border span.right {
+  transform: scaleY(1);
+  transition-delay: 0.3s;
+}
+.service-card:hover .card-border span.bottom {
+  transform: scaleX(1);
+  transition-delay: 0.6s;
+}
+.service-card:hover .card-border span.left {
+  transform: scaleY(1);
+  transition-delay: 0.9s;
+}
+
+/* ---------- Testimonial Section ---------- */
+
+.testimonial .sec-content {
+  overflow: hidden;
+}
+.testimonial-item {
+  padding: 10px;
+  width: 100%;
+}
+.testimonial-card {
+  background-color: #121212;
+  padding: 30px;
+  width: 100%;
+}
+.testimonial-card .profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.testimonial-card .profile .image {
+  display: flex;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.testimonial-card .profile .image img {
+  width: 70px;
+  aspect-ratio: 1/1;
+}
+.testimonial-card .profile .text h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+.testimonial-card .profile .text h5 {
+  font-size: 15px;
+  font-weight: 400;
+  color: #fffa;
+}
+.testimonial-card i {
+  font-size: 38px;
+}
+.testimonial-card p {
+  line-height: 2;
+}
+
+.owl-item.active .testimonial-card {
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+/* ----------------------------------------
+04. Resume Wrapper
+---------------------------------------- */
+
+/* ---------- Resume Section ---------- */
+
+.resume .sec-content h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.timeline {
+  padding-left: 30px;
+  position: relative;
+  clip-path: inset(0 0 0 0);
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background-color: #fff;
+  z-index: 1;
+}
+.timeline-card {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #121212;
+  position: relative;
+  transition: background-color 0.3s ease-in-out;
+}
+.timeline-card:hover {
+  background-color: #202020;
+}
+.timeline-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -30px;
+  width: 10px;
+  height: 1px;
+  background-color: #fff;
+}
+.timeline-item:first-child {
+  margin-top: 0;
+}
+
+.timeline-card h5 {
+  font-size: 18px;
+  font-weight: 600;
+}
+.timeline-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.timeline-card p {
+  margin-bottom: 0;
+}
+
+.timeline-card .card-border span {
+  transition-duration: 0.2s;
+}
+.timeline-card:hover .card-border span.top {
+  transform: scaleX(1);
+}
+.timeline-card:hover .card-border span.right {
+  transform: scaleY(1);
+  transition-delay: 0.2s;
+}
+.timeline-card:hover .card-border span.bottom {
+  transform: scaleX(1);
+  transition-delay: 0.4s;
+}
+.timeline-card:hover .card-border span.left {
+  transform: scaleY(1);
+  transition-delay: 0.6s;
+}
+
+/* ---------- Skill Section ---------- */
+
+.skill-card {
+  margin-bottom: 20px;
+}
+.skill-card .info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.skill-card .bar {
+  width: 100%;
+  height: 4px;
+  background-color: #202020;
+  position: relative;
+}
+.skill-card .bar span {
+  display: inline-block;
+  width: 0%;
+  height: 4px;
+  background-color: #fff;
+  position: absolute;
+}
+
+/* ----------------------------------------
+05. Portfolio Wrapper
+---------------------------------------- */
+
+/* ---------- Portfolio Section ---------- */
+
+.portfolio .filter-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: auto;
+  width: fit-content;
+}
+.portfolio .filter-list li {
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+}
+.portfolio .filter-list li::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background-color: #fff;
+  transform: translateY(-5px);
+  transition: 0.25s;
+}
+.portfolio .filter-list li:hover,
+.portfolio .filter-list li.active {
+  color: #fff;
+}
+.portfolio .filter-list li:hover::after,
+.portfolio .filter-list li.active::after {
+  width: 100%;
+}
+
+.portfolio-container {
+  display: flex;
+  position: relative;
+  margin-top: 40px;
+  display: grid;
+}
+.portfolio-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 33.33%;
+  padding: 10px;
+}
+.portfolio-card {
+  width: 100%;
+  overflow: hidden;
+}
+
+.portfolio-card img {
+  width: 100%;
+  transition: 0.3s;
+  z-index: -1;
+}
+.portfolio-card:hover img {
+  filter: blur(10px) opacity(0.4);
+  scale: 1.1;
+}
+
+.portfolio-card .overlay {
+  position: absolute;
+  inset: 0 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+  transition: 0.3s;
+  opacity: 0;
+  visibility: hidden;
+}
+.portfolio-card:hover .overlay {
+  opacity: 1;
+  visibility: visible;
+}
+.portfolio-card .overlay h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.portfolio-card a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  border-radius: 50%;
+  margin: auto;
+  transition: 0.3s;
+}
+.portfolio-card a:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* ---------- Counter Section ---------- */
+
+.counter-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 40px 0;
+  background-color: #121212;
+}
+.counter-card i {
+  font-size: 76px;
+}
+.counter-card h3 {
+  font-size: 32px;
+  font-weight: 700;
+}
+.counter-card h5 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* ----------------------------------------
+06. Blog Wrapper
+---------------------------------------- */
+
+/* ---------- Blog Section ---------- */
+
+.blog-container {
+  overflow: hidden;
+}
+.blog-item {
+  overflow: hidden;
+}
+.blog-card {
+  overflow: hidden;
+  background-color: #121212;
+}
+.blog-card .text {
+  padding: 20px;
+}
+.blog-card .text h6 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  user-select: none;
+}
+.blog-card .text h3 {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+.blog-card .text a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 30px;
+  user-select: none;
+  transition: gap 0.3s ease-in-out;
+}
+.blog-card .text a:hover {
+  gap: 16px;
+}
+.blog-card .text a i {
+  font-size: 18px;
+}
+
+/* ----------------------------------------
+07. Contact Wrapper
+---------------------------------------- */
+
+/* ---------- Contact Section ---------- */
+
+.contact .detail h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.contact .detail ul {
+  margin-top: 20px;
+}
+.contact .detail ul li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.contact .detail ul li i {
+  font-size: 38px;
+}
+.contact .detail ul li h4 {
+  font-size: 18px;
+  font-weight: 600;
+}
+.contact .detail ul li h5 {
+  font-size: 15px;
+  font-weight: 400;
+  color: #fffa;
+}
+
+.contact .form-message.success {
+  color: green;
+}
+.contact .form-message.error {
+  color: red;
+}
+
+/* ----------------------------------------
+08. Responsive Styles
+---------------------------------------- */
+
+@media (max-width: 992px) {
+  .sec-title h1 {
+    font-size: 72px;
+  }
+  .hero {
+    background-position: right;
+  }
+  .portfolio-item {
+    width: 50%;
+  }
+}
+@media (max-width: 768px) {
+  nav ul li .nav-link {
+    font-size: 28px;
+  }
+  .hero h1 {
+    font-size: 52px;
+  }
+  .hero .social-icons {
+    flex-direction: row;
+  }
+  .portfolio-item {
+    width: 100%;
+  }
+}
+@media (max-width: 576px) {
+  .hero h1 {
+    font-size: 44px;
+  }
+  .hero h2 {
+    font-size: 24px;
+  }
+  .sec-title h1 {
+    font-size: 60px;
+  }
+}
