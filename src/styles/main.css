@@ -1068,7 +1068,7 @@ section:last-child {
     font-size: 52px;
   }
   .hero {
-    background-position: center top;
+    background-position: 84% top;
   }
   .hero .social-icons {
     flex-direction: row;

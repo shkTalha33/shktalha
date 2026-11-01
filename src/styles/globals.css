@@ -64,3 +64,84 @@ body {
   object-fit: cover !important;
   object-position: top center !important;
 }
+
+/* ---------- Responsive Hero Section (Visible on ALL Screen Sizes) ---------- */
+.hero {
+  background-image: url(/assets/img/hero.png) !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: right top !important;
+  position: relative;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 3;
+}
+
+.hero .logo,
+.hero .social-icons {
+  z-index: 10 !important;
+}
+
+/* Tablet screens (768px - 992px) */
+@media (max-width: 992px) {
+  .hero {
+    background-position: 82% top !important;
+    background-size: cover !important;
+  }
+}
+
+/* Mobile screens (< 768px) */
+@media (max-width: 768px) {
+  .hero {
+    background-position: 84% top !important;
+    background-size: cover !important;
+  }
+
+  /* Subtle gradient overlay ensuring text readability while keeping portrait crisp */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(8, 8, 8, 0.35) 0%,
+      rgba(8, 8, 8, 0.55) 50%,
+      rgba(8, 8, 8, 0.85) 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .hero h1 {
+    font-size: 46px !important;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.95), 0 2px 4px rgba(0, 0, 0, 0.85) !important;
+  }
+
+  .hero h2 {
+    font-size: 24px !important;
+    text-shadow: 0 3px 14px rgba(0, 0, 0, 0.95), 0 2px 4px rgba(0, 0, 0, 0.85) !important;
+  }
+}
+
+/* Small mobile screens (< 576px) */
+@media (max-width: 576px) {
+  .hero {
+    background-position: 84% top !important;
+    background-size: cover !important;
+  }
+
+  .hero h1 {
+    font-size: 36px !important;
+  }
+
+  .hero h2 {
+    font-size: 20px !important;
+  }
+
+  .hero .social-icons {
+    bottom: 25px !important;
+    right: 25px !important;
+  }
+}
