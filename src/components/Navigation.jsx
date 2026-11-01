@@ -1,10 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import gsap from "gsap";
 
 export default function Navigation({ activeSection, onSectionChange }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isAtTop, setIsAtTop] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Only display the hamburger menu button when at the top of the page (< 90px)
+      setIsAtTop(window.scrollY < 90);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { id: "hero", label: "Home" },
@@ -55,8 +67,12 @@ export default function Navigation({ activeSection, onSectionChange }) {
 
   return (
     <>
-      {/* Menu Button */}
-      <div className={`menu-btn ${isOpen ? "open" : ""}`} onClick={toggleMenu}>
+      {/* Menu Button - Displayed only at the top; hides when scrolling down */}
+      <div
+        className={`menu-btn ${isOpen ? "open" : ""} ${!isAtTop && !isOpen ? "nav-hidden" : ""}`}
+        onClick={toggleMenu}
+        aria-label="Toggle navigation menu"
+      >
         <div>
           <span></span>
           <span></span>

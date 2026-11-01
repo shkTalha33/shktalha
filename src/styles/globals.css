@@ -84,6 +84,17 @@ body {
   z-index: 10 !important;
 }
 
+/* ---------- Navigation Menu Button (Top-Only Display & Smooth Visibility) ---------- */
+.menu-btn {
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), top 0.3s ease, right 0.3s ease !important;
+}
+
+.menu-btn.nav-hidden {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(-20px) scale(0.9) !important;
+}
+
 /* Tablet screens (768px - 992px) */
 @media (max-width: 992px) {
   .hero {
@@ -97,6 +108,26 @@ body {
   .hero {
     background-position: 84% top !important;
     background-size: cover !important;
+  }
+
+  /* Match Logo and Menu Button padding to section container edges */
+  .hero .logo {
+    top: 25px !important;
+    left: 20px !important;
+    transform: none !important;
+    width: 44px !important;
+  }
+
+  .menu-btn {
+    top: 25px !important;
+    right: 20px !important;
+    transform: none !important;
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .menu-btn.nav-hidden {
+    transform: translateY(-25px) scale(0.9) !important;
   }
 
   /* Subtle gradient overlay ensuring text readability while keeping portrait crisp */
@@ -130,6 +161,26 @@ body {
   .hero {
     background-position: 84% top !important;
     background-size: cover !important;
+  }
+
+  /* Small mobile padding exactly matching container gutter (16px) */
+  .hero .logo {
+    top: 20px !important;
+    left: 16px !important;
+    transform: none !important;
+    width: 38px !important;
+  }
+
+  .menu-btn {
+    top: 20px !important;
+    right: 16px !important;
+    transform: none !important;
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .menu-btn.nav-hidden {
+    transform: translateY(-25px) scale(0.9) !important;
   }
 
   .hero h1 {
