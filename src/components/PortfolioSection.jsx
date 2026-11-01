@@ -21,45 +21,51 @@ export default function PortfolioSection() {
   const portfolioItems = [
     {
       id: 1,
-      title: 'Full Stack Web Platform',
+      title: 'Valix — UK Accounting Platform',
       category: 'development',
-      desc: 'High-performance web application built with React, Next.js, and Node.js with secure authentication.',
-      image: '/assets/img/portfolio/1.png',
+      desc: 'UK accounting SaaS platform for firms & businesses: HMRC submissions, payroll RTI, and VAT returns.',
+      image: '/assets/img/portfolio/valix.png',
+      link: 'https://valix.co.uk/',
     },
     {
       id: 2,
+      title: 'Noorāni Botanics — Luxury E-Commerce',
+      category: 'web-design',
+      desc: 'Luxury botanical skincare, hair rituals, and artisanal fragrance e-commerce web platform.',
+      image: '/assets/img/portfolio/noorani.png',
+      link: 'https://noorani-botanic.vercel.app/',
+    },
+    {
+      id: 3,
+      title: 'Fortune Destinations — Travel & Tourism',
+      category: 'development',
+      desc: 'Dubai & UAE premier tour booking portal featuring desert safaris, city excursions, and experiences.',
+      image: '/assets/img/portfolio/fortune.png',
+      link: 'https://fortunedestinations.com/',
+    },
+    {
+      id: 4,
+      title: 'Butterfly Sanctuary — Holistic Wellness',
+      category: 'web-design',
+      desc: 'Holistic health, on-demand Pilates workouts, strength training, and wellness coaching platform.',
+      image: '/assets/img/portfolio/butterfly.png',
+      link: 'https://www.butterflysanctuaryja.com/',
+    },
+    {
+      id: 5,
       title: 'Autonomous Agentic AI Platform',
       category: 'agentic-ai',
       desc: 'Autonomous multi-step Agentic AI system streamlining inquiries and intelligent task execution.',
       image: '/assets/img/portfolio/2.png',
+      link: '#',
     },
     {
-      id: 3,
-      title: 'Modern UI/UX Design System',
-      category: 'web-design',
-      desc: 'Clean, minimalist web design architecture focusing on micro-interactions and accessibility.',
-      image: '/assets/img/portfolio/3.png',
-    },
-    {
-      id: 4,
-      title: 'SaaS Dashboard & Analytics',
-      category: 'development',
-      desc: 'Real-time interactive analytics dashboard powered by MERN stack with Redux state management.',
-      image: '/assets/img/portfolio/4.png',
-    },
-    {
-      id: 5,
+      id: 6,
       title: 'Agentic AI Assistant',
       category: 'agentic-ai',
       desc: 'Intelligent AI assistant integrating LLM tooling, function calling, and structured reasoning.',
       image: '/assets/img/portfolio/5.png',
-    },
-    {
-      id: 6,
-      title: 'E-Commerce Solution',
-      category: 'web-design',
-      desc: 'Responsive modern e-commerce storefront with optimized checkout flow and lightning speed.',
-      image: '/assets/img/portfolio/6.png',
+      link: '#',
     },
   ];
 
@@ -195,7 +201,12 @@ export default function PortfolioSection() {
                               <div className="text">
                                 <h3>{item.title}</h3>
                                 <p>{item.desc}</p>
-                                <a href={item.image} target="_blank" rel="noopener noreferrer">
+                                <a
+                                  href={item.link && item.link !== '#' ? item.link : item.image}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  title="View Project"
+                                >
                                   <i className="bx bx-link-external"></i>
                                 </a>
                               </div>

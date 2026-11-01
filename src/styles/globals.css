@@ -56,3 +56,11 @@ body {
     opacity: 1;
   }
 }
+
+/* Portfolio Card uniform aspect ratio & top-anchored screenshot preview */
+.portfolio-card img {
+  width: 100% !important;
+  aspect-ratio: 3 / 2 !important;
+  object-fit: cover !important;
+  object-position: top center !important;
+}

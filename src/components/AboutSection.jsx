@@ -77,18 +77,24 @@ export default function AboutSection({ onNavigate }) {
     },
     {
       id: 3,
+      title: 'Workflow & Automations',
+      icon: 'bx bx-sync',
+      desc: 'Streamlining business operations with custom automations, webhook integrations, and smart API pipelines that eliminate repetitive manual work.',
+    },
+    {
+      id: 4,
       title: 'Web Design',
       icon: 'bx bx-palette',
       desc: 'Crafting modern, accessible, and intuitive user experiences with clean visual hierarchy, responsive layouts, and smooth animations.',
     },
     {
-      id: 4,
+      id: 5,
       title: 'MERN Stack Development',
       icon: 'bx bx-layer',
       desc: 'End-to-end full stack engineering using MongoDB, Express.js, React, and Node.js for robust, secure data-driven platforms.',
     },
     {
-      id: 5,
+      id: 6,
       title: 'API & Cloud Architecture',
       icon: 'bx bx-server',
       desc: 'Designing clean RESTful and GraphQL APIs with optimized database queries, secure authentication, and seamless cloud deployment.',
