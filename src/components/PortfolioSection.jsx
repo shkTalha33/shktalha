@@ -9,7 +9,7 @@ export default function PortfolioSection() {
   const [counts, setCounts] = useState({
     projects: 0,
     clients: 0,
-    awards: 0,
+    satisfaction: 0,
     lines: 0,
   });
 
@@ -21,44 +21,44 @@ export default function PortfolioSection() {
   const portfolioItems = [
     {
       id: 1,
-      title: 'Landing Page',
-      category: 'web-design',
-      desc: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus odit tenetur id!',
+      title: 'Full Stack Web Platform',
+      category: 'development',
+      desc: 'High-performance web application built with React, Next.js, and Node.js with secure authentication.',
       image: '/assets/img/portfolio/1.png',
     },
     {
       id: 2,
-      title: 'Banner Ad',
-      category: 'graphic-design',
-      desc: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus odit tenetur id!',
+      title: 'Autonomous Agentic AI Platform',
+      category: 'agentic-ai',
+      desc: 'Autonomous multi-step Agentic AI system streamlining inquiries and intelligent task execution.',
       image: '/assets/img/portfolio/2.png',
     },
     {
       id: 3,
-      title: 'Music App',
-      category: 'development',
-      desc: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus odit tenetur id!',
+      title: 'Modern UI/UX Design System',
+      category: 'web-design',
+      desc: 'Clean, minimalist web design architecture focusing on micro-interactions and accessibility.',
       image: '/assets/img/portfolio/3.png',
     },
     {
       id: 4,
-      title: 'Web App',
-      category: 'web-design',
-      desc: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus odit tenetur id!',
+      title: 'SaaS Dashboard & Analytics',
+      category: 'development',
+      desc: 'Real-time interactive analytics dashboard powered by MERN stack with Redux state management.',
       image: '/assets/img/portfolio/4.png',
     },
     {
       id: 5,
-      title: 'Product Mockup',
-      category: 'graphic-design',
-      desc: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus odit tenetur id!',
+      title: 'Agentic AI Assistant',
+      category: 'agentic-ai',
+      desc: 'Intelligent AI assistant integrating LLM tooling, function calling, and structured reasoning.',
       image: '/assets/img/portfolio/5.png',
     },
     {
       id: 6,
-      title: 'Social Media App',
-      category: 'development',
-      desc: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus odit tenetur id!',
+      title: 'E-Commerce Solution',
+      category: 'web-design',
+      desc: 'Responsive modern e-commerce storefront with optimized checkout flow and lightning speed.',
       image: '/assets/img/portfolio/6.png',
     },
   ];
@@ -98,10 +98,10 @@ export default function PortfolioSection() {
               let startTime = null;
               const duration = 1800;
               const targetCounts = {
-                projects: 100,
-                clients: 80,
-                awards: 25,
-                lines: 1500,
+                projects: 20,
+                clients: 18,
+                satisfaction: 100,
+                lines: 100,
               };
 
               const animateCount = (timestamp) => {
@@ -112,7 +112,7 @@ export default function PortfolioSection() {
                 setCounts({
                   projects: Math.floor(ease * targetCounts.projects),
                   clients: Math.floor(ease * targetCounts.clients),
-                  awards: Math.floor(ease * targetCounts.awards),
+                  satisfaction: Math.floor(ease * targetCounts.satisfaction),
                   lines: Math.floor(ease * targetCounts.lines),
                 });
 
@@ -157,22 +157,22 @@ export default function PortfolioSection() {
                         All
                       </li>
                       <li
+                        className={`filter ${filter === 'development' ? 'active' : ''}`}
+                        onClick={() => setFilter('development')}
+                      >
+                        Development & AI
+                      </li>
+                      <li
                         className={`filter ${filter === 'web-design' ? 'active' : ''}`}
                         onClick={() => setFilter('web-design')}
                       >
                         Web Design
                       </li>
                       <li
-                        className={`filter ${filter === 'graphic-design' ? 'active' : ''}`}
-                        onClick={() => setFilter('graphic-design')}
+                        className={`filter ${filter === 'agentic-ai' ? 'active' : ''}`}
+                        onClick={() => setFilter('agentic-ai')}
                       >
-                        Graphic Design
-                      </li>
-                      <li
-                        className={`filter ${filter === 'development' ? 'active' : ''}`}
-                        onClick={() => setFilter('development')}
-                      >
-                        Development
+                        Agentic AI
                       </li>
                     </ul>
                   </div>
@@ -230,7 +230,7 @@ export default function PortfolioSection() {
                 <div className="row g-4">
                   <div className="col-md-6 col-xl-3">
                     <div className="counter-card">
-                      <i className="bx bx-shopping-bag"></i>
+                      <i className="bx bx-briefcase-alt-2"></i>
                       <div className="text">
                         <h3>
                           <span className="counter">{counts.projects}</span>+
@@ -254,12 +254,12 @@ export default function PortfolioSection() {
 
                   <div className="col-md-6 col-xl-3">
                     <div className="counter-card">
-                      <i className="bx bx-award"></i>
+                      <i className="bx bx-check-shield"></i>
                       <div className="text">
                         <h3>
-                          <span className="counter">{counts.awards}</span>+
+                          <span className="counter">{counts.satisfaction}</span>%
                         </h3>
-                        <h5>Awards Won</h5>
+                        <h5>Client Satisfaction</h5>
                       </div>
                     </div>
                   </div>
@@ -269,7 +269,7 @@ export default function PortfolioSection() {
                       <i className="bx bx-code-alt"></i>
                       <div className="text">
                         <h3>
-                          <span className="counter">{counts.lines}</span>+
+                          <span className="counter">{counts.lines}k</span>+
                         </h3>
                         <h5>Lines of Code</h5>
                       </div>

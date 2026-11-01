@@ -8,15 +8,17 @@ import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
 import ResumeSection from '@/components/ResumeSection';
 import PortfolioSection from '@/components/PortfolioSection';
-import BlogSection from '@/components/BlogSection';
+import TestimonialSection from '@/components/TestimonialSection';
 import ContactSection from '@/components/ContactSection';
+import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('hero');
 
   // Scroll spy to highlight active section in the navigation menu
   useEffect(() => {
-    const sectionIds = ['hero', 'about', 'resume', 'portfolio', 'blog', 'contact'];
+    const sectionIds = ['hero', 'about', 'resume', 'portfolio', 'testimonial', 'contact'];
     const observers = [];
 
     sectionIds.forEach((id) => {
@@ -65,9 +67,15 @@ export default function Home() {
 
       <PortfolioSection />
 
-      <BlogSection />
+      <TestimonialSection />
 
       <ContactSection />
+
+      {/* Footer */}
+      <Footer />
+
+      {/* Floating Scroll to Top with Dynamic Circular Fill */}
+      <ScrollToTop />
     </main>
   );
 }

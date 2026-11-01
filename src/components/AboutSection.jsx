@@ -3,20 +3,17 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import TestimonialSlider from './TestimonialSlider';
 
 export default function AboutSection({ onNavigate }) {
   const sectionRef = useRef(null);
   const imageRef = useRef(null);
   const contentRef = useRef(null);
   const servicesRef = useRef(null);
-  const testimonialRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // About intro entrance
       if (imageRef.current) {
         gsap.from(imageRef.current, {
           scrollTrigger: {
@@ -46,7 +43,6 @@ export default function AboutSection({ onNavigate }) {
         });
       }
 
-      // Services staggered entrance
       if (servicesRef.current) {
         gsap.from(servicesRef.current.querySelectorAll('.service-item'), {
           scrollTrigger: {
@@ -61,21 +57,6 @@ export default function AboutSection({ onNavigate }) {
           ease: 'power2.out',
         });
       }
-
-      // Testimonial entrance
-      if (testimonialRef.current) {
-        gsap.from(testimonialRef.current, {
-          scrollTrigger: {
-            trigger: testimonialRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none none',
-          },
-          opacity: 0,
-          y: 30,
-          duration: 0.7,
-          ease: 'power2.out',
-        });
-      }
     }, sectionRef);
 
     return () => ctx.revert();
@@ -86,37 +67,31 @@ export default function AboutSection({ onNavigate }) {
       id: 1,
       title: 'Web Development',
       icon: 'bx bx-code-alt',
-      desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, molestiae in aperiam quo minima atque?',
+      desc: 'Building responsive, scalable, and high-performance web applications using modern frameworks like React, Next.js, and Node.js.',
     },
     {
       id: 2,
-      title: 'Graphic Design',
-      icon: 'bx bx-pen',
-      desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, molestiae in aperiam quo minima atque?',
+      title: 'Agentic AI Development',
+      icon: 'bx bx-bot',
+      desc: 'Designing and deploying autonomous Agentic AI systems, multi-agent architectures, and LLM integrations that solve complex problems.',
     },
     {
       id: 3,
-      title: 'Photography',
-      icon: 'bx bx-camera',
-      desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, molestiae in aperiam quo minima atque?',
+      title: 'Web Design',
+      icon: 'bx bx-palette',
+      desc: 'Crafting modern, accessible, and intuitive user experiences with clean visual hierarchy, responsive layouts, and smooth animations.',
     },
     {
       id: 4,
-      title: 'Mobile Development',
-      icon: 'bx bx-mobile-alt',
-      desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, molestiae in aperiam quo minima atque?',
+      title: 'MERN Stack Development',
+      icon: 'bx bx-layer',
+      desc: 'End-to-end full stack engineering using MongoDB, Express.js, React, and Node.js for robust, secure data-driven platforms.',
     },
     {
       id: 5,
-      title: 'Video Editing',
-      icon: 'bx bx-movie-play',
-      desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, molestiae in aperiam quo minima atque?',
-    },
-    {
-      id: 6,
-      title: 'Business Analysis',
-      icon: 'bx bx-bar-chart-alt-2',
-      desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, molestiae in aperiam quo minima atque?',
+      title: 'API & Cloud Architecture',
+      icon: 'bx bx-server',
+      desc: 'Designing clean RESTful and GraphQL APIs with optimized database queries, secure authentication, and seamless cloud deployment.',
     },
   ];
 
@@ -149,41 +124,52 @@ export default function AboutSection({ onNavigate }) {
               <div className="row g-5">
                 <div className="col-lg-4">
                   <div className="sec-image" ref={imageRef}>
-                    <img src="/assets/img/about.png" alt="About" className="img-fluid" />
+                    <img src="/assets/img/about.png" alt="Muhammad Talha" className="img-fluid" />
                   </div>
                 </div>
                 <div className="col-lg-8">
                   <div className="sec-content" ref={contentRef}>
-                    <h3>I'm James Smith</h3>
+                    <h3>I'm Muhammad Talha</h3>
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis saepe, nam, nesciunt
-                      distinctio, officia dignissimos aliquam repellendus dolor modi officiis odit nisi libero
-                      similique enim nemo deleniti culpa animi incidunt a maxime tenetur velit expedita.
+                      A passionate Full Stack Developer and Agentic AI Developer with over 2+ years
+                      of hands-on industry experience building scalable web applications, dynamic interfaces,
+                      and intelligent autonomous systems.
                     </p>
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro quis totam eum fugit
-                      architecto, quas dolorum. Rerum assumenda quaerat nihil?
+                      Specializing in React, Next.js, Python, Node.js, and Agentic AI systems. Dedicated to
+                      writing clean, maintainable code that turns ambitious ideas into high-impact digital products.
                     </p>
                     <div className="row detail">
                       <div className="col-lg-6">
                         <ul>
-                          <li><span>Name</span><span>James Smith</span></li>
-                          <li><span>Birthday</span><span>May 24 2002</span></li>
-                          <li><span>Address</span><span>California, USA</span></li>
-                          <li><span>Experience</span><span>6 Years</span></li>
+                          <li><span>Name</span><span>Muhammad Talha</span></li>
+                          <li><span>Birthday</span><span>23 March 2002</span></li>
+                          <li><span>Address</span><span>Ali Housing Colony, Faisalabad</span></li>
+                          <li><span>Experience</span><span>2+ Years</span></li>
                         </ul>
                       </div>
                       <div className="col-lg-6">
                         <ul>
-                          <li><span>Email</span><span>email@domain.com</span></li>
-                          <li><span>Phone</span><span>+012-3456-7891</span></li>
-                          <li><span>Skype</span><span>yourskipe</span></li>
+                          <li><span>Email</span><span><a href="mailto:shykhtalha33@gmail.com">shykhtalha33@gmail.com</a></span></li>
+                          <li><span>Phone</span><span><a href="tel:+923187019892">+92 318 7019892</a></span></li>
+                          <li>
+                            <span>LinkedIn</span>
+                            <span>
+                              <a
+                                href="https://www.linkedin.com/in/muhammad-talha-772085392/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                muhammad-talha-772085392
+                              </a>
+                            </span>
+                          </li>
                           <li><span>Freelance</span><span>Available</span></li>
                         </ul>
                       </div>
                     </div>
                     <div className="button-box">
-                      <a href="/cv.txt" download className="button">
+                      <a href="/Muhammad_TALHA_CV.pdf" download="Muhammad_TALHA_CV.pdf" className="button">
                         Download CV
                       </a>
                       <a href="#contact" className="button" onClick={handleLetsTalk}>
@@ -241,29 +227,6 @@ export default function AboutSection({ onNavigate }) {
         </div>
       </section>
       {/* End Services */}
-
-      {/* Start Testimonial */}
-      <section className="testimonial" id="testimonial" ref={testimonialRef}>
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <div className="sec-title">
-                <h1>Testimonial</h1>
-                <h2>My Testimonials</h2>
-              </div>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-12">
-              <div className="sec-content">
-                <TestimonialSlider />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* End Testimonial */}
     </div>
   );
 }

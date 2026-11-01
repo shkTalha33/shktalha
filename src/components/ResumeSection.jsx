@@ -16,7 +16,6 @@ export default function ResumeSection() {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // Timeline animations
       if (educationRef.current) {
         gsap.from(educationRef.current.children, {
           scrollTrigger: {
@@ -47,7 +46,6 @@ export default function ResumeSection() {
         });
       }
 
-      // Skills trigger
       if (skillsRef.current) {
         ScrollTrigger.create({
           trigger: skillsRef.current,
@@ -77,54 +75,52 @@ export default function ResumeSection() {
 
   const education = [
     {
-      period: '2011 - 2014',
-      title: 'Computer Science',
-      desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium nostrum ex perspiciatis sequi pariatur? Minus facilis consectetur ab autem esse!',
+      period: '2021 - 2025',
+      title: "Bachelor's in Computer Science",
+      institution: 'GCUF (Government College University Faisalabad)',
+      desc: 'Focused on core computer science fundamentals, software engineering methodologies, data structures, algorithms, and artificial intelligence.',
     },
     {
-      period: '2014 - 2016',
-      title: 'Bachelor Degree',
-      desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium nostrum ex perspiciatis sequi pariatur? Minus facilis consectetur ab autem esse!',
+      period: '2018 - 2020',
+      title: 'Intermediate in FSc Pre-Engineering',
+      institution: 'Superior College',
+      desc: 'Completed higher secondary education emphasizing mathematics, physics, and computational thinking with high academic distinction.',
     },
     {
       period: '2016 - 2018',
-      title: 'Master Degree',
-      desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium nostrum ex perspiciatis sequi pariatur? Minus facilis consectetur ab autem esse!',
+      title: 'Matriculation in Computer Science',
+      institution: 'Usman Blessing School',
+      desc: 'Completed secondary school education with foundational studies in computer science, mathematics, and natural sciences.',
     },
   ];
 
   const experience = [
     {
-      period: '2018 - 2020',
-      title: 'UI/UX Designer',
-      desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium nostrum ex perspiciatis sequi pariatur? Minus facilis consectetur ab autem esse!',
+      period: '1 Nov 2024 - Present',
+      title: 'Full Stack Developer',
+      company: 'Utecho',
+      desc: 'Spearheading the architecture and development of scalable web platforms, building modern full-stack web applications, and integrating autonomous Agentic AI systems.',
     },
     {
-      period: '2020 - 2022',
-      title: 'Font End Developer',
-      desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium nostrum ex perspiciatis sequi pariatur? Minus facilis consectetur ab autem esse!',
-    },
-    {
-      period: '2022 - 2024',
-      title: 'Software Engineer',
-      desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium nostrum ex perspiciatis sequi pariatur? Minus facilis consectetur ab autem esse!',
+      period: 'Dec 2023 - Apr 2024',
+      title: 'MERN Stack Developer (Internship)',
+      company: 'Dev House',
+      desc: 'Completed an intensive 5-month internship developing responsive user interfaces in React, implementing RESTful backend APIs with Node.js/Express, and managing MongoDB databases.',
     },
   ];
 
   const skillsCol1 = [
-    { name: 'HTML', value: '99%' },
-    { name: 'CSS', value: '98%' },
-    { name: 'JS', value: '95%' },
-    { name: 'Jquery', value: '93%' },
-    { name: 'React', value: '94%' },
+    { name: 'React', value: '95%' },
+    { name: 'Next.js', value: '92%' },
+    { name: 'JavaScript', value: '95%' },
+    { name: 'Python', value: '88%' },
   ];
 
   const skillsCol2 = [
-    { name: 'Photoshop', value: '93%' },
-    { name: 'Illustrator', value: '90%' },
-    { name: 'Figma', value: '95%' },
-    { name: 'Premiere Pro', value: '86%' },
-    { name: 'Blender', value: '78%' },
+    { name: 'Node.js', value: '92%' },
+    { name: 'Express.js', value: '90%' },
+    { name: 'MongoDB', value: '88%' },
+    { name: 'Redux', value: '90%' },
   ];
 
   return (
@@ -144,7 +140,7 @@ export default function ResumeSection() {
           <div className="row">
             <div className="col-12">
               <div className="sec-content">
-                <div className="row align-items-center g-5">
+                <div className="row g-5">
                   <div className="col-lg-6">
                     <h2>Education</h2>
                     <div className="timeline" ref={educationRef}>
@@ -153,6 +149,9 @@ export default function ResumeSection() {
                           <div className="timeline-card">
                             <h5>{item.period}</h5>
                             <h3>{item.title}</h3>
+                            <h6 style={{ color: '#ffffffaa', marginBottom: '12px', fontSize: '15px', fontWeight: 500 }}>
+                              {item.institution}
+                            </h6>
                             <p>{item.desc}</p>
                             <div className="card-border">
                               <span className="top"></span>
@@ -174,6 +173,9 @@ export default function ResumeSection() {
                           <div className="timeline-card">
                             <h5>{item.period}</h5>
                             <h3>{item.title}</h3>
+                            <h6 style={{ color: '#ffffffaa', marginBottom: '12px', fontSize: '15px', fontWeight: 500 }}>
+                              {item.company}
+                            </h6>
                             <p>{item.desc}</p>
                             <div className="card-border">
                               <span className="top"></span>

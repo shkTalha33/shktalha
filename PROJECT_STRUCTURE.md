@@ -17,7 +17,7 @@ Personal portfolio/
 │   ├── assets/
 │   │   ├── fonts/                     # Boxicons font suite (eot, ttf, woff, woff2, svg)
 │   │   └── img/                       # Images (avatar, hero, logo, blog, portfolio, testimonial)
-│   └── cv.txt                         # Downloadable resume placeholder
+│   └── Muhammad_TALHA_CV.pdf        # Downloadable resume PDF
 │
 ├── src/
 │   ├── app/

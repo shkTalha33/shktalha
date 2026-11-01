@@ -11,7 +11,7 @@ export default function Navigation({ activeSection, onSectionChange }) {
     { id: 'about', label: 'About' },
     { id: 'resume', label: 'Resume' },
     { id: 'portfolio', label: 'Portfolio' },
-    { id: 'blog', label: 'Blog' },
+    { id: 'testimonial', label: 'Testimonials' },
     { id: 'contact', label: 'Contact' },
   ];
 

@@ -35,3 +35,24 @@ body {
 .blog-card:hover {
   transform: translateY(-5px);
 }
+
+/* Typed.js cursor styling */
+.typed-cursor {
+  font-weight: 300;
+  color: #ffffff;
+  opacity: 1;
+  margin-left: 3px;
+  animation: typedBlink 0.7s infinite;
+}
+
+@keyframes typedBlink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

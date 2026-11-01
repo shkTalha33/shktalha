@@ -16,6 +16,7 @@ export default function ContactSection() {
     message: '',
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState({
     submitted: false,
     message: '',
@@ -63,7 +64,7 @@ export default function ContactSection() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
       setStatus({
@@ -74,22 +75,50 @@ export default function ContactSection() {
       return;
     }
 
-    setStatus({
-      submitted: true,
-      message: 'Thank you! Your message has been sent successfully.',
-      type: 'success',
-    });
+    setIsSubmitting(true);
+    setStatus({ submitted: false, message: '', type: '' });
 
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-    });
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-    setTimeout(() => {
-      setStatus({ submitted: false, message: '', type: '' });
-    }, 5000);
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setStatus({
+          submitted: true,
+          message: data.message || 'Thank you! Your message has been sent successfully.',
+          type: 'success',
+        });
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        });
+      } else {
+        setStatus({
+          submitted: true,
+          message: data.error || 'Failed to deliver message. Please try again.',
+          type: 'error',
+        });
+      }
+    } catch (err) {
+      console.error('Submission Error:', err);
+      setStatus({
+        submitted: true,
+        message: 'Network error. Please try again or email directly to shykhtalha33@gmail.com',
+        type: 'error',
+      });
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => {
+        setStatus((prev) => ({ ...prev, submitted: false }));
+      }, 6000);
+    }
   };
 
   return (
@@ -121,7 +150,7 @@ export default function ContactSection() {
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
-                                placeholder="Name"
+                                placeholder="Your Name *"
                                 className="form-control"
                                 required
                               />
@@ -134,7 +163,7 @@ export default function ContactSection() {
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                placeholder="Email"
+                                placeholder="Your Email *"
                                 className="form-control"
                                 required
                               />
@@ -159,7 +188,7 @@ export default function ContactSection() {
                                 name="message"
                                 value={formData.message}
                                 onChange={handleChange}
-                                placeholder="Your Message"
+                                placeholder="Your Message *"
                                 className="form-control"
                                 required
                               ></textarea>
@@ -168,7 +197,18 @@ export default function ContactSection() {
                           {status.submitted && (
                             <div className="col-lg-12">
                               <div className="form-group">
-                                <span className={`form-message ${status.type}`}>
+                                <span
+                                  className={`form-message ${status.type}`}
+                                  style={{
+                                    display: 'block',
+                                    padding: '12px 18px',
+                                    borderRadius: '4px',
+                                    fontSize: '14px',
+                                    backgroundColor: status.type === 'success' ? '#19875422' : '#dc354522',
+                                    border: `1px solid ${status.type === 'success' ? '#198754' : '#dc3545'}`,
+                                    color: status.type === 'success' ? '#20c997' : '#ff6b6b',
+                                  }}
+                                >
                                   {status.message}
                                 </span>
                               </div>
@@ -176,8 +216,16 @@ export default function ContactSection() {
                           )}
                           <div className="col-lg-8">
                             <div className="form-group">
-                              <button type="submit" className="button">
-                                Send Message <i className="bx bxs-paper-plane"></i>
+                              <button type="submit" className="button" disabled={isSubmitting}>
+                                {isSubmitting ? (
+                                  <>
+                                    Sending... <i className="bx bx-loader-alt bx-spin"></i>
+                                  </>
+                                ) : (
+                                  <>
+                                    Send Message <i className="bx bxs-paper-plane"></i>
+                                  </>
+                                )}
                               </button>
                             </div>
                           </div>
@@ -187,34 +235,64 @@ export default function ContactSection() {
                   </div>
                   <div className="col-lg-5">
                     <div className="detail" ref={detailRef}>
-                      <h2>Don't hesitate to reach out</h2>
+                      <h2>Let's build something exceptional together</h2>
                       <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui voluptate obcaecati
-                        iusto?
+                        Have a new web application idea, need Agentic AI solutions for your business,
+                        or looking to expand your team with a dedicated Full Stack developer? Reach out anytime!
                       </p>
                       <ul>
                         <li>
                           <i className="bx bxs-map"></i>
                           <div className="text">
-                            <h4>USA Address</h4>
-                            <h5>132, My Street, Kingston, New York 12401.</h5>
+                            <h4>Address</h4>
+                            <h5>Ali Housing Colony, Faisalabad, Pakistan</h5>
                           </div>
                         </li>
                         <li>
                           <i className="bx bxs-phone-call"></i>
                           <div className="text">
-                            <h4>Phone Number</h4>
+                            <h4>Phone / WhatsApp</h4>
                             <h5>
-                              <a href="tel:555-555-1234">(555) 555-1234</a>
+                              <a href="tel:+923187019892">+92 318 7019892</a>
                             </h5>
                           </div>
                         </li>
                         <li>
                           <i className="bx bxs-envelope"></i>
                           <div className="text">
-                            <h4>Email Us</h4>
+                            <h4>Email Directly</h4>
                             <h5>
-                              <a href="mailto:example@email.com">example@email.com</a>
+                              <a href="mailto:shykhtalha33@gmail.com">shykhtalha33@gmail.com</a>
+                            </h5>
+                          </div>
+                        </li>
+                        <li>
+                          <i className="bx bxl-linkedin-square"></i>
+                          <div className="text">
+                            <h4>LinkedIn</h4>
+                            <h5>
+                              <a
+                                href="https://www.linkedin.com/in/muhammad-talha-772085392/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                muhammad-talha-772085392
+                              </a>
+                            </h5>
+                          </div>
+                        </li>
+                        <li>
+                          <i className="bx bxl-github"></i>
+                          <div className="text">
+                            <h4>GitHub</h4>
+                            <h5>
+                              <a
+                                href="https://github.com/shkTalha33"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                shkTalha33
+                              </a>
                             </h5>
                           </div>
                         </li>

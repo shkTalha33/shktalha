@@ -7,8 +7,9 @@ import '@/styles/main.css';
 import '@/styles/globals.css';
 
 export const metadata = {
-  title: 'Lumio Personal Portfolio Template',
-  description: 'Lumio Personal Portfolio Template built with Next.js',
+  title: 'Muhammad Talha - Full Stack Developer & Agentic AI Developer',
+  description:
+    'Personal Portfolio of Muhammad Talha - Full Stack Developer & Agentic AI Developer.',
   icons: {
     icon: '/assets/img/favicon.ico',
   },
@@ -24,4 +25,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-
