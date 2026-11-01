@@ -1,24 +1,31 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import CustomCursor from '@/components/CustomCursor';
-import Preloader from '@/components/Preloader';
-import Navigation from '@/components/Navigation';
-import HeroSection from '@/components/HeroSection';
-import AboutSection from '@/components/AboutSection';
-import ResumeSection from '@/components/ResumeSection';
-import PortfolioSection from '@/components/PortfolioSection';
-import TestimonialSection from '@/components/TestimonialSection';
-import ContactSection from '@/components/ContactSection';
-import Footer from '@/components/Footer';
-import ScrollToTop from '@/components/ScrollToTop';
+import { useState, useEffect } from "react";
+import CustomCursor from "@/components/CustomCursor";
+import Preloader from "@/components/Preloader";
+import Navigation from "@/components/Navigation";
+import HeroSection from "@/components/HeroSection";
+import AboutSection from "@/components/AboutSection";
+import ResumeSection from "@/components/ResumeSection";
+import PortfolioSection from "@/components/PortfolioSection";
+import TestimonialSection from "@/components/TestimonialSection";
+import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState('hero');
+  const [activeSection, setActiveSection] = useState("hero");
 
   // Scroll spy to highlight active section in the navigation menu
   useEffect(() => {
-    const sectionIds = ['hero', 'about', 'resume', 'portfolio', 'testimonial', 'contact'];
+    const sectionIds = [
+      "hero",
+      "about",
+      "resume",
+      "portfolio",
+      "testimonial",
+      "contact",
+    ];
     const observers = [];
 
     sectionIds.forEach((id) => {
@@ -33,7 +40,7 @@ export default function Home() {
             }
           });
         },
-        { threshold: 0.3 }
+        { threshold: 0.3 },
       );
 
       observer.observe(el);
@@ -56,7 +63,10 @@ export default function Home() {
       <Preloader />
 
       {/* Navigation & Transitions */}
-      <Navigation activeSection={activeSection} onSectionChange={setActiveSection} />
+      <Navigation
+        activeSection={activeSection}
+        onSectionChange={setActiveSection}
+      />
 
       {/* Full Continuous Page Sections */}
       <HeroSection />
@@ -67,7 +77,7 @@ export default function Home() {
 
       <PortfolioSection />
 
-      <TestimonialSection />
+      {/* <TestimonialSection /> */}
 
       <ContactSection />
 

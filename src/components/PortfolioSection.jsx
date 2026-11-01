@@ -37,6 +37,14 @@ export default function PortfolioSection() {
     },
     {
       id: 3,
+      title: 'Shaadi Sheets — Wedding Planning & AI Platform',
+      category: ['development', 'agentic-ai'],
+      desc: 'All-in-one South Asian wedding planning platform with budgets, guest lists, and Rayna AI assistant.',
+      image: '/assets/img/portfolio/shaadisheets.png',
+      link: 'https://www.shaadisheets.com/',
+    },
+    {
+      id: 4,
       title: 'Fortune Destinations — Travel & Tourism',
       category: 'development',
       desc: 'Dubai & UAE premier tour booking portal featuring desert safaris, city excursions, and experiences.',
@@ -44,7 +52,7 @@ export default function PortfolioSection() {
       link: 'https://fortunedestinations.com/',
     },
     {
-      id: 4,
+      id: 5,
       title: 'Butterfly Sanctuary — Holistic Wellness',
       category: 'web-design',
       desc: 'Holistic health, on-demand Pilates workouts, strength training, and wellness coaching platform.',
@@ -52,27 +60,48 @@ export default function PortfolioSection() {
       link: 'https://www.butterflysanctuaryja.com/',
     },
     {
-      id: 5,
-      title: 'Autonomous Agentic AI Platform',
-      category: 'agentic-ai',
-      desc: 'Autonomous multi-step Agentic AI system streamlining inquiries and intelligent task execution.',
-      image: '/assets/img/portfolio/2.png',
-      link: '#',
+      id: 6,
+      title: 'Real Estate — Property Portal',
+      category: 'web-design',
+      desc: 'Modern real estate discovery and listing platform to explore homes, properties, and agent listings.',
+      image: '/assets/img/portfolio/realestate.png',
+      link: 'https://real-esate-ebon.vercel.app/',
     },
     {
-      id: 6,
-      title: 'Agentic AI Assistant',
-      category: 'agentic-ai',
-      desc: 'Intelligent AI assistant integrating LLM tooling, function calling, and structured reasoning.',
-      image: '/assets/img/portfolio/5.png',
-      link: '#',
+      id: 7,
+      title: 'VLink — Smart Contactless NFC Cards',
+      category: 'development',
+      desc: 'Contactless digital business networking solution powered by smart NFC and QR technology.',
+      image: '/assets/img/portfolio/vlink.png',
+      link: 'https://vlink-ruddy.vercel.app/',
+    },
+    {
+      id: 8,
+      title: 'Círculo Wingding — Travel & Rewards Community',
+      category: ['development', 'agentic-ai'],
+      desc: 'Dynamic travel rewards community connecting members with exclusive trips and network referral points.',
+      image: '/assets/img/portfolio/circulo.png',
+      link: 'https://circulowingding.com/',
+    },
+    {
+      id: 9,
+      title: 'DOSA Cola — Beverage Brand Platform',
+      category: 'web-design',
+      desc: 'Official digital brand platform and product showcase for DOSA Cola, delivering bold flavor and refreshment.',
+      image: '/assets/img/portfolio/dosacola.png',
+      link: 'https://dosacola.pk/',
     },
   ];
 
   const filteredItems =
     filter === '*'
       ? portfolioItems
-      : portfolioItems.filter((item) => item.category === filter);
+      : portfolioItems.filter((item) => {
+          if (Array.isArray(item.category)) {
+            return item.category.includes(filter);
+          }
+          return item.category === filter;
+        });
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
